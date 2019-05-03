@@ -1,4 +1,5 @@
-function ha  = MarginEdit(Nh, Nw, gap, marg_h, marg_w,TickLabel)%TickLabel=1,有x,y轴刻度
+function ha  = MarginEdit(Nh, Nw, gap, marg_h, marg_w,TickLabel)
+%% 自己手动设置绘图的边距和边界尺寸
 % 使用subplot(row, col, i)创建的子图，matlab会隐式地调整它们的间距以及它们和整个figure的边距，
 % 以达到它所认为的美观或者合理的设置，然而如果我们想根据需求设置合理的间距以及边距，该怎么定制呢？
 % 这里提供一个函数（实在没必要把时间花费在这种繁琐的格式上）：
@@ -7,6 +8,7 @@ function ha  = MarginEdit(Nh, Nw, gap, marg_h, marg_w,TickLabel)%TickLabel=1,有x
 % gap（如[0.01, 0.1]）表示子图之间垂直方向和水平方向的间隔，
 % marg_h表示的是全部子图到figure上下边界的距离，
 % marg_w则表示的是全部子图到figure左右边界的距离。
+%TickLabel=1,有x,y轴刻度
 %  ==========================上边框===================================
 % |               |上边距：marg_h             |上边距：marg_h          |
 % |        -----------------         ----------------------         |

@@ -23,10 +23,11 @@ for i=1:4
                     color=[0 0 0];%4号船黑色
             end
             
-            P(j)=plot(t,DCPA0011(i).record(:,2*j)/1852,'-','Color',color);
+            P(j)=plot(t,DCPA_D2_1(i).record(:,2*j)/1852,'-','Color',color);
             hold on
-            plot(t,DCPA0010(i).record(:,2*j)/1852,'-.','Color',color)
-            hold on
+%             Scenario1-3的对比图，有不猜测的情况，用虚线表示
+%             plot(t,DCPA0010(i).record(:,2*j)/1852,'-.','Color',color)
+%             hold on
             j=j+1;
         end
     end
@@ -53,10 +54,11 @@ for i=1:4
             end
             
             
-            plot(t,Dis0011(i).record(:,2*j),'-','Color',color)
+            plot(t,Dis_D2_1(i).record(:,2*j),'-','Color',color)
             hold on
-            plot(t,Dis0010(i).record(:,2*j),'-.','Color',color)
-            hold on
+%             Scenario1-3的对比图，有不猜测的情况，用虚线表示
+%             plot(t,Dis0010(i).record(:,2*j),'-.','Color',color)
+%             hold on
             j=j+1;
             
         end
