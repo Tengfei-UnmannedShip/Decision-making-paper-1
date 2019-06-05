@@ -45,7 +45,7 @@ t=2500;
 tt=2000;
 for j=1:1:ShipNum
     %     ship(i).pos = boat(i,1:2)*1852;
-    ship(j).speed = boat(j,3)*1852/3600;%WTF：航速为18海里/小时。1海里=1.852公里，因此1海里/小时=1.852公里／小时=1852/3600米/秒
+    ship(j).speed = boat(j,3)*1852/3600;%WTF：航速由海里／小时转换为米／秒，具体为1海里=1.852公里，因此1海里/小时=1.852公里／小时=1852/3600米/秒
     ship(j).initialCourse = boat(j,4);
     ship(j).compliance= boat(j,5); %compliance是对避碰规则的符合性，0：直线前进不避让，1：遵守，2：不遵守，反着来
     ship(j).decisioncycle=boat(j,6);

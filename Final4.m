@@ -20,17 +20,17 @@ t1=clock;
 %1~2位置(中间的位置，不是起始位置)、3航速、4初始航向，5避碰规则符合性，6决策周期时长，7检测范围（range），8证据距离阈值，9是否推测
 
 shipLabel=[
-    1 1
-    1 1
-    1 1
-    1 1];
+    0 0
+    0 0
+    0 0
+    0 0];
 
 % shipLabel=zeros(4,2);%检测是否在中间交汇
 boat=[
-    0.0, 2.5,  18,   0,  1,  3,  6,  0.77, 1
-    0.2,-0.2,  18, 230,  1,  4,  6,  0.77, 1
-    0.4, 0.3,  16, 300,  1,  5,  6,  0.77, 1
-    0.5, 0.5,  13, 135,  1,  5,  6,  0.77, 1
+    0,   0,  18,   0,  1,  3,  5,  0.85, 1
+    0,   0,  18, 230,  1,  4,  5,  0.85, 1
+    0,   0,  16, 300,  1,  5,  5,  0.85, 1
+    0,   0,  13, 135,  1,  5,  5,  0.85, 1
     ];
 boat(:,5)=shipLabel(:,1);
 boat(:,9)=shipLabel(:,2);
@@ -426,58 +426,60 @@ pos2=pos2/1852;
 pos3=pos3/1852;
 pos4=pos4/1852;
 %% 绘图程序：show ships' positions at every moment
+% figure
+% for fig=1:6
+%     
+%     switch fig
+%         case 1
+%             k=200;
+%         case 2
+%             k=500;
+%         case 3
+%             k=1000;
+%         case 4
+%             k=1500;
+%         case 5
+%             k=2000;
+%         case 6
+%             k=2500;
+%     end
+%     
+%     subplot(3,2,fig);
+%     hold on;
+%     
+%     %WTF:画出船舶的初始位置
+%     drawShip0(pos1(1,:),c1(1),1,400);
+%     drawShip0(pos2(1,:),c2(1),2,400);
+%     drawShip0(pos3(1,:),c3(1),3,400);
+%     drawShip0(pos4(1,:),c4(1),4,400);
+%     
+%     %WTF:画出船舶的结束位置
+%     drawShip(pos1(k,:),c1(k),1,400);
+%     drawShip(pos2(k,:),c2(k),2,400);
+%     drawShip(pos3(k,:),c3(k),3,400);
+%     drawShip(pos4(k,:),c4(k),4,400);
+%     
+%     %WTF:画出过往的航迹图
+%     plot(pos1(1:k,1),pos1(1:k,2),'r-');
+%     plot(pos2(1:k,1),pos2(1:k,2),'g-');
+%     plot(pos3(1:k,1),pos3(1:k,2),'b-');
+%     plot(pos4(1:k,1),pos4(1:k,2),'k-');
+%     
+%     %WTF:画出船头的圆用于表示安全范围
+%     circle(pos1(k,:),900/1852,1);
+%     circle(pos2(k,:),900/1852,2);
+%     circle(pos3(k,:),900/1852,3);
+%     circle(pos4(k,:),900/1852,4);
+%     
+%     grid on;
+%     xlabel('\it n miles', 'Fontname', 'Times New Roman');
+%     ylabel('\it n miles', 'Fontname', 'Times New Roman');
+%     title(['t=',num2str(k),'s'], 'Fontname', 'Times New Roman');
+%     box on;
+% end
 figure
-for fig=1:6
-    
-    switch fig
-        case 1
-            k=200;
-        case 2
-            k=500;
-        case 3
-            k=1000;
-        case 4
-            k=1500;
-        case 5
-            k=2000;
-        case 6
-            k=2500;
-    end
-    
-    subplot(3,2,fig);
-    hold on;
-    
-    %WTF:画出船舶的初始位置
-    drawShip0(pos1(1,:),c1(1),1,400);
-    drawShip0(pos2(1,:),c2(1),2,400);
-    drawShip0(pos3(1,:),c3(1),3,400);
-    drawShip0(pos4(1,:),c4(1),4,400);
-    
-    %WTF:画出船舶的结束位置
-    drawShip(pos1(k,:),c1(k),1,400);
-    drawShip(pos2(k,:),c2(k),2,400);
-    drawShip(pos3(k,:),c3(k),3,400);
-    drawShip(pos4(k,:),c4(k),4,400);
-    
-    %WTF:画出过往的航迹图
-    plot(pos1(1:k,1),pos1(1:k,2),'r-');
-    plot(pos2(1:k,1),pos2(1:k,2),'g-');
-    plot(pos3(1:k,1),pos3(1:k,2),'b-');
-    plot(pos4(1:k,1),pos4(1:k,2),'k-');
-    
-    %WTF:画出船头的圆用于表示安全范围
-    circle(pos1(k,:),900/1852,1);
-    circle(pos2(k,:),900/1852,2);
-    circle(pos3(k,:),900/1852,3);
-    circle(pos4(k,:),900/1852,4);
-    
-    grid on;
-    xlabel('\it n miles', 'Fontname', 'Times New Roman');
-    ylabel('\it n miles', 'Fontname', 'Times New Roman');
-    title(['t=',num2str(k),'s'], 'Fontname', 'Times New Roman');
-    box on;
-end
-figure
+ha = MarginEdit(1,1,[.05  0.05],[.05  0.05],[0.05  0.05],1);
+axes(ha(1)); 
 k=ship1Dismin_time(1);
 %WTF:画出船舶的初始位置
 drawShip(pos1(1,:),c1(1),1,400);
@@ -501,7 +503,11 @@ circle(pos1(k,:),900/1852,1);
 circle(pos2(k,:),900/1852,2);
 circle(pos3(k,:),900/1852,3);
 circle(pos4(k,:),900/1852,4);
+
 grid on;
-xlabel('\it n miles', 'Fontname', 'Times New Roman');
-ylabel('\it n miles', 'Fontname', 'Times New Roman');
-title(['t=',num2str(k),'s'], 'Fontname', 'Times New Roman');
+axis on
+box on
+set(gca,'LineWidth',1.5)
+xlabel('\it n miles', 'Fontname', 'Times New Roman','FontSize',15);
+ylabel('\it n miles', 'Fontname', 'Times New Roman','FontSize',15);
+title('Multi-ship encounter situation', 'Fontname', 'Times New Roman','FontSize',15);
