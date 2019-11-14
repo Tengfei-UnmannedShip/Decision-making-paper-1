@@ -15,3 +15,7 @@ The Matlab code of decision making paper1. The paper has submitted to the Journa
 1.补充一个新的实验，即两船处于追越状态，另两艘船处于会遇状态；
 
 2.增加了对于四个案例的DEA分析，由于DEA分析不是本文的重点，因此只是简单的用程序做了一个图。
+
+## 20191114-根据新的审稿意见，重画了fig.7\9\11\13
+新的审稿意见认为旧的DCPA和Dis的图很不清新，于是重新画了图
+
